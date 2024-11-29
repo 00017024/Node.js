@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container mt-5">
+    <h1>User Management</h1>
+    <form method="POST" action="/users/block">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th><input type="checkbox" id="selectAll" /></th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Last Login</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each users}}
+          <tr>
+            <td><input type="checkbox" name="userIds" value="{{id}}" /></td>
+            <td>{{name}}</td>
+            <td>{{email}}</td>
+            <td>{{last_login}}</td>
+            <td>{{status}}</td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+      <button type="submit" class="btn btn-warning">Block</button>
+      <button formaction="/users/unblock" class="btn btn-info">Unblock</button>
+      <button formaction="/users/delete" class="btn btn-danger">Delete</button>
+    </form>
+  </div>
+</body>
+</html>
